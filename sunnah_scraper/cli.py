@@ -26,7 +26,12 @@ def run_collection_scrape(book_filter: Sequence[str] | None = None) -> None:
     LOGGER.info("Fetching collection index from %s", COLLECTION_URL)
     with HttpClient() as client:
         collection_html = client.fetch_text(COLLECTION_URL)
-        index_entries = parser.parse_collection_index(collection_html, COLLECTION_SLUG, COLLECTION_URL)
+        collection_name, index_entries = parser.parse_collection_index(
+            collection_html,
+            COLLECTION_SLUG,
+            COLLECTION_URL,
+        )
+        resolved_collection_name = collection_name or COLLECTION_SLUG.replace("-", " ").title()
         if book_filter:
             index_entries = [entry for entry in index_entries if entry.book_id in book_filter]
         updated_entries: list[BookIndexEntry] = []
@@ -42,6 +47,8 @@ def run_collection_scrape(book_filter: Sequence[str] | None = None) -> None:
                 hadith_records,
             ) = parser.parse_book_page(
                 book_html,
+                collection_slug=COLLECTION_SLUG,
+                collection_name=resolved_collection_name,
                 book_id=entry.book_id,
                 book_url=entry.source_url,
                 fallback_book_title_en=entry.book_title_en,

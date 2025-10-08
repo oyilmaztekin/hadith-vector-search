@@ -41,8 +41,15 @@ def normalize_text(value: Optional[str]) -> Optional[str]:
     return normalized
 
 
-def parse_collection_index(html: str, collection_slug: str, collection_url: str) -> list[BookIndexEntry]:
+def parse_collection_index(
+    html: str,
+    collection_slug: str,
+    collection_url: str,
+) -> tuple[Optional[str], list[BookIndexEntry]]:
     tree = HTMLParser(html)
+    collection_name = text_content(tree.css_first(".collection_info .colindextitle"))
+    if collection_name:
+        collection_name = normalize_text(collection_name)
     anchors = tree.css("a")
     entries: list[BookIndexEntry] = []
     seen: set[str] = set()
@@ -76,7 +83,7 @@ def parse_collection_index(html: str, collection_slug: str, collection_url: str)
         seen.add(book_id)
     if not entries:
         LOGGER.warning("No book links discovered for collection %s", collection_slug)
-    return entries
+    return collection_name, entries
 
 
 def parse_chapter_node(node: Node, *, fallback_anchor: Optional[str] = None) -> ChapterContext:
@@ -134,6 +141,8 @@ def parse_chapter_node(node: Node, *, fallback_anchor: Optional[str] = None) -> 
 def parse_hadith_container(
     container: Node,
     *,
+    collection_slug: str,
+    collection_name: str,
     book_id: str,
     book_title_en: str,
     book_title_ar: Optional[str],
@@ -201,6 +210,8 @@ def parse_hadith_container(
     source_url = f"{base_url}#{hadith_id}"
 
     return HadithRecord(
+        collection_slug=collection_slug,
+        collection_name=collection_name,
         book_id=book_id,
         book_title_en=book_title_en,
         book_title_ar=book_title_ar,
@@ -228,6 +239,8 @@ def parse_hadith_container(
 def parse_book_page(
     html: str,
     *,
+    collection_slug: str,
+    collection_name: str,
     book_id: str,
     book_url: str,
     fallback_book_title_en: Optional[str] = None,
@@ -282,6 +295,8 @@ def parse_book_page(
             elif "actualHadithContainer" in class_tokens:
                 record = parse_hadith_container(
                     node,
+                    collection_slug=collection_slug,
+                    collection_name=collection_name,
                     book_id=book_id,
                     book_title_en=book_title_en,
                     book_title_ar=book_title_ar,

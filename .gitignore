@@ -2,6 +2,7 @@
 venv/
 .venv/
 __pycache__/
+.pycache
 *.py[cod]
 *$py.class
 *.so
@@ -25,6 +26,7 @@ wheels/
 
 # Whisper CLI
 whisper-cli.cpp/
+.claude
 
 # IDE
 .vscode/

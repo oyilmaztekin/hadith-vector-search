@@ -75,7 +75,7 @@ This scaffold will evolve as components are implemented. Update the task checkli
 ## Current Status
 - ✅ `mcp_server/apps/models.py`: Pydantic models with narrator normalization and bilingual validation
 - ✅ `mcp_server/apps/validation.py`: JSONL loader + stats collector (Book 8 fix verified)
-- ✅ `python -m mcp_server.apps.ingestion --book 1`: CLI for per-book validation/stats
+- ✅ `python -m mcp_server.apps.ingestion --book 1`: CLI for per-book validation/stats (writes logs under `logs/ingestion/`)
 - ⬜ Index services, hybrid scorer, MCP tool registration (next milestones)
 
 ### Usage Snapshot

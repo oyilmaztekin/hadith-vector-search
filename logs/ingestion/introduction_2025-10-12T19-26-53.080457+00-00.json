@@ -1,0 +1,16 @@
+{
+  "book_id": "introduction",
+  "total_hadith": 679,
+  "unique_narrators": 224,
+  "checksum_examples": [
+    "3ce5490e950d5e7f3852862c553a22e7df7b4f83f762d6b0acf22885a54ff084",
+    "6b9dd60d152cd280af3a50bb74b2ac9db21e0cf3d3b45b4a505feedd709b27e9",
+    "b0f5742064312bcba22985192b52647484904dd4b8a4dc7341518b34153e5c0d",
+    "c55c2c968185f211e7138bebf8043270430d9c0c950c13a5af90ff0bc3228d06",
+    "bbcf6a1f0f875e14c6607533a4670825175efb1dd3ad19fa371901e795a2e585"
+  ],
+  "warnings": [],
+  "validated_count": 679,
+  "duration_seconds": 0.013,
+  "timestamp": "2025-10-12T19-26-53.080457+00-00"
+}

@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import json
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, List
 
@@ -12,6 +14,7 @@ from .validation import ValidationIssue, validate_book
 
 
 DATA_DIR = Path("data/riyadussalihin")
+LOG_DIR = Path("logs/ingestion")
 
 
 def iter_book_paths(book_ids: Iterable[str] | None = None) -> List[Path]:
@@ -33,7 +36,22 @@ def ingest_book(path: Path) -> BookStats:
     duration = time.perf_counter() - start
     print(stats.model_dump_json(indent=2))
     print(f"Validated {len(records)} hadiths from {path.name} in {duration:.2f}s")
+    write_log(stats, len(records), duration)
     return stats
+
+
+def write_log(stats: BookStats, record_count: int, duration: float) -> None:
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now(timezone.utc).isoformat().replace(":", "-")
+    payload = {
+        **stats.model_dump(),
+        "validated_count": record_count,
+        "duration_seconds": round(duration, 3),
+        "timestamp": timestamp,
+    }
+    log_path = LOG_DIR / f"{stats.book_id}_{timestamp}.json"
+    with log_path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
 def main(argv: list[str] | None = None) -> None:

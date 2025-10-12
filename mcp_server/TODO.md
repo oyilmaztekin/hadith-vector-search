@@ -1,9 +1,9 @@
 # MCP Server Implementation Milestones
 
 ## Milestone A — Validation & Ingestion (Week 1)
-- [ ] `hadith.validation` module: schema checks, narrator canonicalization, bilingual text assertions
-- [ ] Command-line smoke test: `python -m apps.ingestion --book 1`
-- [ ] Persist ingestion stats (counts, checksum diff) to `logs/ingestion/*.json`
+- [x] `hadith.validation` module: schema checks, narrator canonicalization, bilingual text assertions
+- [x] Command-line smoke test: `python -m mcp_server.apps.ingestion --book 1`
+- [x] Persist ingestion stats (counts, checksum diff) to `logs/ingestion/*.json`
 
 ## Milestone B — Index Foundations (Week 1-2)
 - [ ] `apps/embeddings.py`: ChromaDB client with caching by checksum

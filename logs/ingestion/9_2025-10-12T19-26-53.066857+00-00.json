@@ -1,0 +1,14 @@
+{
+  "book_id": "9",
+  "total_hadith": 3,
+  "unique_narrators": 3,
+  "checksum_examples": [
+    "4a5ee680386cd24f8e549a912a8282b665d93a8d0cc6e7edc2726cd40ac2aff8",
+    "1db121147db5b745d06ed2656966699a0ed1f1a46b77389995018adf87f74259",
+    "c3a9d7edf7d3dc0b4387ac70cfa6872f2fb4fcdb4ece654a284d189ad73050a0"
+  ],
+  "warnings": [],
+  "validated_count": 3,
+  "duration_seconds": 0.0,
+  "timestamp": "2025-10-12T19-26-53.066857+00-00"
+}

@@ -1,0 +1,16 @@
+{
+  "book_id": "15",
+  "total_hadith": 57,
+  "unique_narrators": 31,
+  "checksum_examples": [
+    "f1cbd0ed24f56b0a76cf884752d59bff22fc7f9d362441a4356b155e7c36dded",
+    "c848d0db37e2cbd5b0364f67d452f69be956ae925c5409ebebb3c1257f9e070f",
+    "e3c3b329bb2b42ce0ab3fad79a75fb60f16749cf5ec5acdae1f795e41b881461",
+    "b2d6ce4ca438beb567d2e9fbc5fddab3b55886149763779c3ae6617fbc4bf034",
+    "bd23da1bd7282ab6e371e4b81ca10444ea02253b01a4b12cb89247483132550c"
+  ],
+  "warnings": [],
+  "validated_count": 57,
+  "duration_seconds": 0.001,
+  "timestamp": "2025-10-12T19-26-53.043799+00-00"
+}

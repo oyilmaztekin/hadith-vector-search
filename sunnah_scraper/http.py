@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import random
 import time
 from dataclasses import dataclass
@@ -49,7 +50,7 @@ class HttpClient:
         stop=stop_after_attempt(5),
         wait=wait_random_exponential(multiplier=0.5, max=10),
         retry=retry_if_exception_type((requests.RequestException, HttpError)),
-        before_sleep=before_sleep_log(__import__("logging").getLogger(__name__), "Retrying HTTP fetch"),
+        before_sleep=before_sleep_log(logging.getLogger(__name__), logging.WARNING),
     )
     def fetch_text(self, url: str, *, timeout: float = 20.0) -> str:
         self._rate_limiter.wait()

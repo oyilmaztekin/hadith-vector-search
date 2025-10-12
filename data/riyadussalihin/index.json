@@ -1,21 +1,12 @@
 [
   {
-    "book_id": "introduction",
-    "source_url": "https://sunnah.com/riyadussalihin/introduction",
-    "book_number": null,
-    "book_title_en": "The Book of Miscellany",
-    "book_title_ar": "كتاب المقدمات",
-    "hadith_count": 679,
-    "scraped_at": "2025-10-08T18:04:09.950083Z"
-  },
-  {
     "book_id": "1",
     "source_url": "https://sunnah.com/riyadussalihin/1",
     "book_number": "1",
     "book_title_en": "The Book of Good Manners",
     "book_title_ar": "كتاب الأدب",
     "hadith_count": 47,
-    "scraped_at": "2025-10-08T18:04:09.950131Z"
+    "scraped_at": "2025-10-08T18:04:11.535295Z"
   },
   {
     "book_id": "2",
@@ -24,7 +15,7 @@
     "book_title_en": "The Book About the Etiquette of Eating",
     "book_title_ar": "كتـــــاب أدب الطعام",
     "hadith_count": 51,
-    "scraped_at": "2025-10-08T18:04:09.950182Z"
+    "scraped_at": "2025-10-08T18:04:12.648123Z"
   },
   {
     "book_id": "3",
@@ -33,7 +24,7 @@
     "book_title_en": "The Book of Dress",
     "book_title_ar": "كتــــاب اللباس",
     "hadith_count": 35,
-    "scraped_at": "2025-10-08T18:04:09.950205Z"
+    "scraped_at": "2025-10-08T18:04:13.748214Z"
   },
   {
     "book_id": "4",
@@ -42,7 +33,7 @@
     "book_title_en": "The Book of the Etiquette of Sleeping, Lying and Sitting etc",
     "book_title_ar": "كتاب آداب النوم",
     "hadith_count": 31,
-    "scraped_at": "2025-10-08T18:04:09.950225Z"
+    "scraped_at": "2025-10-08T18:04:15.088029Z"
   },
   {
     "book_id": "5",
@@ -51,7 +42,7 @@
     "book_title_en": "The Book of Greetings",
     "book_title_ar": "كتاب السلام",
     "hadith_count": 50,
-    "scraped_at": "2025-10-08T18:04:09.950247Z"
+    "scraped_at": "2025-10-08T18:04:16.240435Z"
   },
   {
     "book_id": "6",
@@ -60,7 +51,7 @@
     "book_title_en": "The Book of Visiting the Sick",
     "book_title_ar": "كتاب عيادة المريض وتشييع الميت والصلاة عليه وحضور دفنه",
     "hadith_count": 62,
-    "scraped_at": "2025-10-08T18:04:09.950268Z"
+    "scraped_at": "2025-10-08T18:04:17.248242Z"
   },
   {
     "book_id": "7",
@@ -69,16 +60,16 @@
     "book_title_en": "The Book of Etiquette of Traveling",
     "book_title_ar": "كتاب آداب السفر",
     "hadith_count": 35,
-    "scraped_at": "2025-10-08T18:04:09.950285Z"
+    "scraped_at": "2025-10-08T18:04:18.420438Z"
   },
   {
     "book_id": "8",
     "source_url": "https://sunnah.com/riyadussalihin/8",
     "book_number": "8",
     "book_title_en": "The Book of Virtues",
-    "book_title_ar": "ЩғШӘШ§ШЁ Ш§Щ„ЩҒШ¶Ш§ШҰЩ„",
+    "book_title_ar": "كتاب الفضائل",
     "hadith_count": 277,
-    "scraped_at": "2025-10-08T18:04:09.950301Z"
+    "scraped_at": "2025-10-12T17:54:50.083847Z"
   },
   {
     "book_id": "9",
@@ -87,7 +78,7 @@
     "book_title_en": "The Book of I'tikaf",
     "book_title_ar": "كتاب الاعتكاف",
     "hadith_count": 3,
-    "scraped_at": "2025-10-08T18:04:09.950318Z"
+    "scraped_at": "2025-10-12T17:51:59.420889Z"
   },
   {
     "book_id": "10",
@@ -96,7 +87,7 @@
     "book_title_en": "The Book of Hajj",
     "book_title_ar": "كتاب الحج",
     "hadith_count": 14,
-    "scraped_at": "2025-10-08T18:04:09.950334Z"
+    "scraped_at": "2025-10-08T18:04:21.978734Z"
   },
   {
     "book_id": "11",
@@ -105,7 +96,7 @@
     "book_title_en": "The Book of Jihad",
     "book_title_ar": "كتاب الجهاد",
     "hadith_count": 91,
-    "scraped_at": "2025-10-08T18:04:09.950351Z"
+    "scraped_at": "2025-10-08T18:04:23.794162Z"
   },
   {
     "book_id": "12",
@@ -114,7 +105,7 @@
     "book_title_en": "The Book of Knowledge",
     "book_title_ar": "كتاب العلم",
     "hadith_count": 17,
-    "scraped_at": "2025-10-08T18:04:09.950367Z"
+    "scraped_at": "2025-10-08T18:04:24.391080Z"
   },
   {
     "book_id": "13",
@@ -123,7 +114,7 @@
     "book_title_en": "The Book of Praise and Gratitude to Allah",
     "book_title_ar": "كتاب حمد الله تعالى وشكره",
     "hadith_count": 4,
-    "scraped_at": "2025-10-08T18:04:09.950385Z"
+    "scraped_at": "2025-10-08T18:04:25.515733Z"
   },
   {
     "book_id": "14",
@@ -132,7 +123,7 @@
     "book_title_en": "The Book of Supplicating Allah to Exalt the Mention of Allah's Messenger",
     "book_title_ar": "كتاب الصلاة على رسول الله صلى الله عليه وسلم",
     "hadith_count": 11,
-    "scraped_at": "2025-10-08T18:04:09.950411Z"
+    "scraped_at": "2025-10-08T18:04:26.797350Z"
   },
   {
     "book_id": "15",
@@ -141,7 +132,7 @@
     "book_title_en": "The Book of the Remembrance of Allah",
     "book_title_ar": "كتاب الأذكار",
     "hadith_count": 57,
-    "scraped_at": "2025-10-08T18:04:09.950428Z"
+    "scraped_at": "2025-10-08T18:04:28.906283Z"
   },
   {
     "book_id": "16",
@@ -150,7 +141,7 @@
     "book_title_en": "The Book of Du'a (Supplications)",
     "book_title_ar": "كتاب الدعوات",
     "hadith_count": 46,
-    "scraped_at": "2025-10-08T18:04:09.950444Z"
+    "scraped_at": "2025-10-08T18:04:29.248198Z"
   },
   {
     "book_id": "17",
@@ -159,7 +150,7 @@
     "book_title_en": "The Book of the Prohibited actions",
     "book_title_ar": "كتاب الأمور المنهي عنها",
     "hadith_count": 297,
-    "scraped_at": "2025-10-08T18:04:09.950461Z"
+    "scraped_at": "2025-10-08T18:04:31.212036Z"
   },
   {
     "book_id": "18",
@@ -168,7 +159,7 @@
     "book_title_en": "The Book of Miscellaneous ahadith of Significant Values",
     "book_title_ar": "كتاب المنثورات والملح",
     "hadith_count": 61,
-    "scraped_at": "2025-10-08T18:04:09.950477Z"
+    "scraped_at": "2025-10-08T18:04:31.664447Z"
   },
   {
     "book_id": "19",
@@ -177,6 +168,15 @@
     "book_title_en": "The Book of Forgiveness",
     "book_title_ar": "كتاب الاستغفار",
     "hadith_count": 28,
-    "scraped_at": "2025-10-08T18:04:09.950497Z"
+    "scraped_at": "2025-10-08T18:04:32.954952Z"
+  },
+  {
+    "book_id": "introduction",
+    "source_url": "https://sunnah.com/riyadussalihin/introduction",
+    "book_number": null,
+    "book_title_en": "The Book of Miscellany",
+    "book_title_ar": "كتاب المقدمات",
+    "hadith_count": 679,
+    "scraped_at": "2025-10-08T18:04:11.277229Z"
   }
 ]

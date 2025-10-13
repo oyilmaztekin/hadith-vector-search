@@ -3,3 +3,5 @@ selectolax
 tenacity
 pydantic
 python-dateutil
+chromadb==1.0.21
+sentence-transformers==5.1.0

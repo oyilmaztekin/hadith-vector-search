@@ -4,4 +4,6 @@ __all__ = [
     "models",
     "validation",
     "ingestion",
+    "embeddings",
+    "fts",
 ]

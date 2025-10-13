@@ -6,9 +6,9 @@
 - [x] Persist ingestion stats (counts, checksum diff) to `logs/ingestion/*.json`
 
 ## Milestone B — Index Foundations (Week 1-2)
-- [ ] `apps/embeddings.py`: ChromaDB client with caching by checksum
-- [ ] `apps/fts.py`: create FTS5 tables and seed with Book 1 sample
-- [ ] MCP tools `vector_index_status` and `fts_status`
+- [x] `apps/embeddings.py`: ChromaDB client with caching by checksum
+- [x] `apps/fts.py`: create FTS5 tables and seed with Book 1 sample
+- [x] MCP tools `vector_index_status` and `fts_status`
 
 ## Milestone C — Hybrid Search Core (Week 2)
 - [ ] Implement `HybridScorer.calculate_priority_score`

@@ -92,6 +92,29 @@ class FTSIndex:
             "last_updated": last_updated,
         }
 
+    def search_match(self, match: str, limit: int = 20) -> List[Dict[str, object]]:
+        if not self.dependencies_ok():
+            raise FtsIndexError(self._dependency_error or "FTS unavailable")
+        sql = (
+            "SELECT doc_id, book_id, chapter_id, narrator, english_text, bm25(hadith_fts) AS bm25 "
+            "FROM hadith_fts WHERE hadith_fts MATCH ? ORDER BY bm25 LIMIT ?"
+        )
+        with self._connect() as conn:
+            rows = conn.execute(sql, (match, int(limit))).fetchall()
+            return [dict(row) for row in rows]
+
+    def get_by_doc_ids(self, ids: List[str]) -> Dict[str, Dict[str, object]]:
+        if not ids:
+            return {}
+        placeholders = ",".join("?" for _ in ids)
+        sql = (
+            f"SELECT doc_id, book_id, chapter_id, narrator, english_text FROM hadith_fts "
+            f"WHERE doc_id IN ({placeholders})"
+        )
+        with self._connect() as conn:
+            rows = conn.execute(sql, ids).fetchall()
+            return {row["doc_id"]: dict(row) for row in rows}
+
     def upsert_documents(
         self,
         documents: Iterable[HadithDocument],

@@ -274,6 +274,52 @@ class EmbeddingIndex:
                 ) from exc
         return self._model
 
+    def query(self, query_text: str, n_results: int = 20) -> List[Dict[str, object]]:
+        """Return top-N vector candidates with normalized similarity.
+
+        Uses local SentenceTransformer to embed the query and queries Chroma with
+        query_embeddings to avoid relying on collection-level embedding functions.
+        Converts distances to a [0,1] similarity via 1 / (1 + distance), which is
+        robust for cosine distances that may exceed 1.0.
+        """
+        if not self.dependencies_ok() or self._collection is None:
+            return []
+        try:
+            # Embed query locally for consistent scoring with upserted vectors
+            model = self._ensure_model()
+            qvec = model.encode([query_text], convert_to_numpy=True)
+            res = self._collection.query(
+                query_embeddings=qvec.tolist(),
+                n_results=int(n_results),
+                include=["distances", "metadatas"],
+            )
+            ids = res.get("ids", [[]])[0]
+            distances = res.get("distances", [[]])[0]
+            metadatas = res.get("metadatas", [[]])[0]
+            out: List[Dict[str, object]] = []
+            for i, doc_id in enumerate(ids or []):
+                dist = None
+                if distances and i < len(distances):
+                    d = distances[i]
+                    try:
+                        dist = float(d) if d is not None else None
+                    except Exception:
+                        dist = None
+                sim = 0.0
+                if dist is not None:
+                    # Normalize distance to similarity in [0,1]
+                    sim = 1.0 / (1.0 + max(0.0, dist))
+                md = metadatas[i] if metadatas and i < len(metadatas) else {}
+                out.append({
+                    "doc_id": doc_id,
+                    "similarity": sim,
+                    "distance": dist,
+                    "metadata": md or {},
+                })
+            return out
+        except Exception:
+            return []
+
 
 __all__ = [
     "EmbeddingIndex",

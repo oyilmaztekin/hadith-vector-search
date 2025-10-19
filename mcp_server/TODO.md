@@ -11,9 +11,9 @@
 - [x] MCP tools `vector_index_status` and `fts_status`
 
 ## Milestone C — Hybrid Search Core (Week 2)
-- [ ] Implement `HybridScorer.calculate_priority_score`
-- [ ] Port query router heuristics (exact reference, narrator, thematic, mixed)
-- [ ] Expose `hybrid_search` MCP tool returning ranked results + breakdown
+- [x] Implement `HybridScorer.calculate_priority_score`
+- [x] Port query router heuristics (exact reference, narrator, thematic, mixed)
+- [x] Expose `hybrid_search` MCP tool returning ranked results + breakdown
 
 ## Milestone D — Benchmark & QA (Week 3)
 - [ ] Integrate `TEST_QUERIES.md` into `apps/benchmark.py`

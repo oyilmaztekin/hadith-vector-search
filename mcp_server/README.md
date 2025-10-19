@@ -34,6 +34,7 @@ mcp_server.py        # MCP server entrypoint registering tools
 config/
   settings.py        # Paths, model names, thresholds
   logging.py         # Structured logging helpers
+http_server.py       # Flask HTTP server exposing MCP endpoints
 ```
 
 ## 4. Implementation Sequencing
@@ -65,6 +66,30 @@ config/
 - 🔲 Prototype MCP server entrypoint with placeholder tools returning `NotImplemented`.
 - 🔲 Define configuration module (paths, embedding model names, thresholds).
 
+## 7. MCP Servers
+
+Two ways to integrate with MCP clients:
+
+- Python stdio MCP (requires Python ≥ 3.10 + python SDK):
+  - Install: `python3 -m pip install "git+https://github.com/modelcontextprotocol/python-sdk.git#egg=mcp"`
+  - Run Inspector: `npx -y @modelcontextprotocol/inspector --command "python3 -m mcp_server.mcp_stdio"`
+  - ChatGPT MCP connection: Command `python3`, Args `-m`, `mcp_server.mcp_stdio`.
+
+- Node stdio MCP bridge (no Python SDK requirement):
+  - In repo root: `npm init -y && npm i @modelcontextprotocol/sdk`
+  - Run Inspector: `npx -y @modelcontextprotocol/inspector --command "node mcp_server/js/mcp-server.mjs"`
+  - ChatGPT MCP connection:
+    - Command: `node`
+    - Arguments: `mcp_server/js/mcp-server.mjs`
+    - Working directory: repo root (so Python can import `mcp_server`)
+    - Optional env: `PYTHONPATH` set to repo root; ensure `python3` in PATH
+
+Available tools (both servers):
+- `hybrid_search` { query, n_results?, mode?, collection?, weight_*?, bonus_phrase? }
+- `fts_status` { collection? }
+- `vector_index_status` { collection? }
+- `fts_match` { match? | en?/ar?/narrator?, limit?, collection? }
+
 ## 6. Open Questions
 1. Should authentication or rate limiting be part of the MCP interface?
 2. Will the server manage embeddings lazily (on demand) or during ingestion?
@@ -85,4 +110,14 @@ python -m mcp_server.apps.ingestion --book 1
 
 # Validate the full corpus (may take ~30s depending on disk)
 python -m mcp_server.apps.ingestion
+
+# Run HTTP server (Flask)
+python -m mcp_server.http_server --host 127.0.0.1 --port 8000
+
+# Example calls
+curl 'http://127.0.0.1:8000/api/riyadussalihin/status/fts'
+curl 'http://127.0.0.1:8000/api/riyadussalihin/status/vector'
+curl -X POST 'http://127.0.0.1:8000/api/riyadussalihin/search/hybrid' \
+     -H 'Content-Type: application/json' \
+     -d '{"query": "narrated by Abu Hurairah", "n_results": 5, "mode": "balanced"}'
 ```

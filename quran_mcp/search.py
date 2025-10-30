@@ -183,6 +183,7 @@ class QuranSearchIndex:
         mode: str = "hybrid",
         weight_vector: Optional[float] = None,
         weight_fts: Optional[float] = None,
+        dedupe: bool = True,
     ) -> Dict[str, object]:
         self._ensure_index()
         query = (query or "").strip()
@@ -254,7 +255,27 @@ class QuranSearchIndex:
             total = vec_weight * item.get("vector_score", 0.0) + fts_weight * item.get("fts_score", 0.0)
             item["score"] = round(float(total), 6)
 
-        hits = sorted(combined.values(), key=lambda x: x.get("score", 0.0), reverse=True)[: int(limit)]
+        sorted_items = sorted(
+            combined.values(), key=lambda x: x.get("score", 0.0), reverse=True
+        )
+
+        deduped_hits = []
+        duplicate_count = 0
+        if dedupe:
+            seen_blocks: set[str] = set()
+            for item in sorted_items:
+                block = (item.get("text_preview") or item.get("snippet") or "").strip()
+                if not block:
+                    block = item.get("verse_key", "")
+                if block in seen_blocks:
+                    duplicate_count += 1
+                    continue
+                seen_blocks.add(block)
+                deduped_hits.append(item)
+                if len(deduped_hits) >= limit:
+                    break
+        else:
+            deduped_hits = sorted_items[: int(limit)]
 
         result = {
             "query": query,
@@ -273,7 +294,7 @@ class QuranSearchIndex:
                         "fts": round(float(item.get("fts_score", 0.0)), 6),
                     },
                 }
-                for item in hits
+                for item in deduped_hits
             ],
             "weights": {
                 "weight_vector": vec_weight,
@@ -291,6 +312,9 @@ class QuranSearchIndex:
         if self._vector_error is not None:
             result["vector_error"] = self._vector_error
         result["total_candidates"] = len(combined)
+        if dedupe:
+            result["duplicates_filtered"] = duplicate_count
+            result["returned_hits"] = len(result["hits"])
         return result
 
 

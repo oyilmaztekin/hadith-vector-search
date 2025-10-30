@@ -103,7 +103,6 @@ def create_server(
             "surah": entry.surah,
             "ayah": entry.ayah,
             "resource": entry.resource_name,
-            "text_html": entry.text_html,
             "text_plain": entry.text_plain,
         }
 

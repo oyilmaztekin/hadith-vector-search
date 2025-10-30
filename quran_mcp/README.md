@@ -6,7 +6,7 @@ This module exposes the Ibn Kathir (Abridged) tafsir dataset via the Model Conte
 
 - `search_tafsir` – Hybrid search over the tafsir corpus using SQLite FTS5 and sentence-transformer embeddings (modes: `hybrid`, `semantic`, `fts`).
   - Optional knobs: `mode`, `weight_vector`, `weight_fts`, `dedupe` (filters duplicate passages that span multiple ayat).
-- `get_verse` – Fetch a tafsir record by `verse_key` or (`surah`, `ayah`). Returns both raw HTML and plain-text versions.
+- `get_verse` – Fetch a tafsir record by `verse_key` or (`surah`, `ayah`). Returns a plain-text tafsir excerpt.
 - `index_status` – Diagnostic information about the in-memory index.
 
 ## Streamable HTTP Transport

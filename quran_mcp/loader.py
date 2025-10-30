@@ -32,7 +32,6 @@ class TafsirEntry:
     resource_name: str
     language_id: int
     slug: Optional[str]
-    text_html: str
     text_plain: str
     translated_name: Optional[Dict[str, str]] = None
 
@@ -88,6 +87,9 @@ class QuranCorpus:
                         payload = json.loads(line)
                     except json.JSONDecodeError as exc:
                         raise ValueError(f"Invalid JSON at {path}:{line_number}: {exc}") from exc
+                    text_plain = payload.get("text_plain")
+                    if not text_plain:
+                        text_plain = _strip_html(str(payload.get("text_html", "")))
                     entry = TafsirEntry(
                         surah=int(payload.get("surah")),
                         ayah=int(payload.get("ayah")),
@@ -96,8 +98,7 @@ class QuranCorpus:
                         resource_name=str(payload.get("resource_name", "")),
                         language_id=int(payload.get("language_id", 0)),
                         slug=payload.get("slug"),
-                        text_html=str(payload.get("text_html", "")),
-                        text_plain=_strip_html(str(payload.get("text_html", ""))),
+                        text_plain=str(text_plain or ""),
                         translated_name=payload.get("translated_name"),
                     )
                     entries.append(entry)

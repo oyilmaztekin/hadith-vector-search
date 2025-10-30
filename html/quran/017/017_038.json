@@ -1,0 +1,21 @@
+{
+  "tafsir": {
+    "verses": {
+      "17:37": {
+        "id": 2066
+      },
+      "17:38": {
+        "id": 2067
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<h2>Condemnation of strutting</h2><p>Allah forbids His servants to strut and walk in a boastful manner:</p><div class=\"arabic uthmani\">وَلاَ تَمْشِ فِى الاٌّرْضِ مَرَحًا</div><p>(And walk not on the earth with conceit and arrogance.) meaning, walking in boastful manner and acting proud, like those who are arrogant oppressors.</p><div class=\"arabic uthmani\">إِنَّكَ لَن تَخْرِقَ الاٌّرْضَ</div><p>(Verily, you can neither rend nor penetrate the earth) means, you cannot penetrate the earth with your walking. This was the opinion of Ibn Jarir.</p>"
+  }
+}

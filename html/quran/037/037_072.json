@@ -1,0 +1,27 @@
+{
+  "tafsir": {
+    "verses": {
+      "37:71": {
+        "id": 3859
+      },
+      "37:72": {
+        "id": 3860
+      },
+      "37:73": {
+        "id": 3861
+      },
+      "37:74": {
+        "id": 3862
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<div class=\"arabic uthmani\">فَانظُرْ كَيْفَ كَانَ عَـقِبَةُ الْمُنذَرِينَ إِلاَّ عِبَادَ اللَّهِ الْمُخْلَصِينَ </div><p>(Then see what was the end of those who were warned. Except the chosen servants of Allah).</p>"
+  }
+}

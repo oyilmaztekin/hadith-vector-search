@@ -1,0 +1,18 @@
+{
+  "tafsir": {
+    "verses": {
+      "49:8": {
+        "id": 4620
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<div class=\"arabic uthmani\">وَاللَّهُ عَلِيمٌ حَكِيمٌ</div><p>(8 cont. And Allah is All-Knowing, All-Wise.) All-Knower in those who deserve guidance and those who deserve misguidance, All-Wise in His statements, actions, legislation and the destiny He appoints. </p>"
+  }
+}

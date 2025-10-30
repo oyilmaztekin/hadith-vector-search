@@ -1,0 +1,18 @@
+{
+  "tafsir": {
+    "verses": {
+      "9:90": {
+        "id": 1325
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<div class=\"arabic uthmani\">وَقَعَدَ الَّذِينَ كَذَبُواْ اللَّهَ وَرَسُولَهُ</div><p>(and those who had lied to Allah and His Messenger sat at home), and did not ask for permission for it; and Allah warned them of painful punishment, </p><div class=\"arabic uthmani\">سَيُصِيبُ الَّذِينَ كَفَرُواْ مِنْهُمْ عَذَابٌ أَلِيمٌ</div><p>(a painful torment will seize those of them who disbelieve.) </p>"
+  }
+}

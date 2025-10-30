@@ -1,0 +1,33 @@
+{
+  "tafsir": {
+    "verses": {
+      "15:28": {
+        "id": 1830
+      },
+      "15:29": {
+        "id": 1831
+      },
+      "15:30": {
+        "id": 1832
+      },
+      "15:31": {
+        "id": 1833
+      },
+      "15:32": {
+        "id": 1834
+      },
+      "15:33": {
+        "id": 1835
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<h2>The creation of Adam, the Command to the Angels to prostrate to Him, and the Rebellion of Iblis</h2><p>Allah informs us of how He mentioned Adam to His angels before He created him, and how He honored him by commanding the angels to prostrate to him. He mentions how His enemy Iblis, amidst all the angels, refused to prostrate to him out of envy, disbelief, stubbornness, arrogance, and false pride. This is why Iblis said:</p><div class=\"arabic uthmani\">لَمْ أَكُن لاًّسْجُدَ لِبَشَرٍ خَلَقْتَهُ مِن صَلْصَـلٍ مِّنْ حَمَإٍ مَّسْنُونٍ</div><p>(I am not one to prostrate myself to a human, whom You created from dried (sounding) clay of altered mud.) this is like when he said,</p><div class=\"arabic uthmani\">أَنَاْ خَيْرٌ مِّنْهُ خَلَقْتَنِي مِن نَّارٍ وَخَلَقْتَهُ مِن طِينٍ</div><p>(I am better than him (Adam), You created me from Fire and him You created from clay.)(7:12) and</p><div class=\"arabic uthmani\">أَرَءَيْتَكَ هَـذَا الَّذِى كَرَّمْتَ عَلَىَّ</div><p>(\"Do you see this one whom You have honored above me...\") 17:62</p>"
+  }
+}

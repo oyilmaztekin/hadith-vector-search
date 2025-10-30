@@ -2,5 +2,6 @@
 
 from .loader import QuranCorpus, TafsirEntry
 from .search import QuranSearchIndex
+from .server import create_server
 
-__all__ = ["QuranCorpus", "TafsirEntry", "QuranSearchIndex"]
+__all__ = ["QuranCorpus", "TafsirEntry", "QuranSearchIndex", "create_server"]

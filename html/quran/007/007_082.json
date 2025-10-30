@@ -1,0 +1,18 @@
+{
+  "tafsir": {
+    "verses": {
+      "7:82": {
+        "id": 1036
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<div class=\"arabic uthmani\">إِنَّهُمْ أُنَاسٌ يَتَطَهَّرُونَ</div><p>(\"These are indeed men who want to be pure (from sins)!\") Qatadah commented, \"They shamed them (Lut and the believers) with what is not a shame at all.\" Mujahid commented, \"(Lut's people said about Lut and the believers,) They are a people who want to be pure from men's anuses and women's anuses!\" Similar was narrated from Ibn `Abbas. </p>"
+  }
+}

@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import asyncio
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Sequence
 
 try:
     from mcp.server import Server
@@ -25,6 +25,25 @@ except Exception as exc:  # pragma: no cover
     raise RuntimeError(
         "The 'mcp' package is required. Install with: pip install mcp"
     ) from exc
+
+try:  # pragma: no cover - support multiple SDK versions gracefully
+    from mcp.types import (
+        CallToolRequest,
+        CallToolResult,
+        ListToolsRequest,
+        ListToolsResult,
+        ServerResult,
+        TextContent,
+        Tool,
+    )
+except Exception:  # Older SDKs expose plain dict interfaces
+    CallToolRequest = None  # type: ignore[assignment]
+    CallToolResult = None  # type: ignore[assignment]
+    ListToolsRequest = None  # type: ignore[assignment]
+    ListToolsResult = None  # type: ignore[assignment]
+    ServerResult = None  # type: ignore[assignment]
+    TextContent = None  # type: ignore[assignment]
+    Tool = None  # type: ignore[assignment]
 
 from .tools import hybrid_search as do_hybrid_search
 from .tools import fts_status as do_fts_status
@@ -35,57 +54,84 @@ from .apps.fts import FTSIndex
 server = Server("hadith-mcp")
 
 
+_TOOL_DEFINITIONS: Sequence[Dict[str, Any]] = (
+    {
+        "name": "hybrid_search",
+        "description": "Hybrid search over hadith corpus",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "query": {"type": "string"},
+                "n_results": {"type": "integer", "default": 10, "minimum": 1},
+                "mode": {"type": "string", "enum": ["balanced", "term-priority"]},
+                "collection": {"type": "string", "default": "riyadussalihin"},
+                "weight_vector": {"type": "number"},
+                "weight_fts": {"type": "number"},
+                "weight_term_coverage": {"type": "number"},
+                "bonus_phrase": {"type": "number"},
+            },
+            "required": ["query"],
+        },
+    },
+    {
+        "name": "fts_status",
+        "description": "FTS index status",
+        "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}}},
+    },
+    {
+        "name": "vector_index_status",
+        "description": "Vector index status",
+        "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}}},
+    },
+    {
+        "name": "fts_match",
+        "description": "Run raw FTS MATCH query",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "match": {"type": "string"},
+                "en": {"type": "string"},
+                "ar": {"type": "string"},
+                "narrator": {"type": "string"},
+                "limit": {"type": "integer", "default": 10, "minimum": 1},
+                "collection": {"type": "string", "default": "riyadussalihin"},
+            },
+        },
+    },
+)
+
+
+def _tool_models() -> Optional[Sequence[Any]]:
+    if Tool is None:
+        return None
+    return tuple(Tool(**definition) for definition in _TOOL_DEFINITIONS)
+
+
+def _structured_result(data: Any | None = None, *, is_error: bool = False, text: Optional[str] = None) -> Any:
+    if CallToolResult is not None:
+        content = [TextContent(type="text", text=text)] if text and TextContent is not None else []
+        kwargs: Dict[str, Any] = {"content": content, "isError": is_error}
+        if data is not None:
+            kwargs["structuredContent"] = data
+        return CallToolResult(**kwargs)
+
+    payload: Dict[str, Any] = {"content": []}
+    if data is not None:
+        payload["content"].append({"type": "json", "data": data})
+    if text:
+        payload["content"].append({"type": "text", "text": text})
+    if not payload["content"]:
+        payload["content"].append({"type": "text", "text": ""})
+    if is_error:
+        payload["isError"] = True
+    return payload
+
+
 def list_tools() -> Dict[str, Any]:
-    return {
-        "tools": [
-            {
-                "name": "hybrid_search",
-                "description": "Hybrid search over hadith corpus",
-                "inputSchema": {
-                    "type": "object",
-                    "properties": {
-                        "query": {"type": "string"},
-                        "n_results": {"type": "integer", "default": 10, "minimum": 1},
-                        "mode": {"type": "string", "enum": ["balanced", "term-priority"]},
-                        "collection": {"type": "string", "default": "riyadussalihin"},
-                        "weight_vector": {"type": "number"},
-                        "weight_fts": {"type": "number"},
-                        "weight_term_coverage": {"type": "number"},
-                        "bonus_phrase": {"type": "number"},
-                    },
-                    "required": ["query"],
-                },
-            },
-            {
-                "name": "fts_status",
-                "description": "FTS index status",
-                "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}}},
-            },
-            {
-                "name": "vector_index_status",
-                "description": "Vector index status",
-                "inputSchema": {"type": "object", "properties": {"collection": {"type": "string"}}},
-            },
-            {
-                "name": "fts_match",
-                "description": "Run raw FTS MATCH query",
-                "inputSchema": {
-                    "type": "object",
-                    "properties": {
-                        "match": {"type": "string"},
-                        "en": {"type": "string"},
-                        "ar": {"type": "string"},
-                        "narrator": {"type": "string"},
-                        "limit": {"type": "integer", "default": 10, "minimum": 1},
-                        "collection": {"type": "string", "default": "riyadussalihin"},
-                    },
-                },
-            },
-        ]
-    }
+    return {"tools": [dict(tool) for tool in _TOOL_DEFINITIONS]}
 
 
-async def call_tool(name: str, args: Dict[str, Any]) -> Dict[str, Any]:
+async def call_tool(name: str, args: Dict[str, Any]) -> Any:
     if name == "hybrid_search":
         data = do_hybrid_search(
             args.get("query"),
@@ -97,15 +143,15 @@ async def call_tool(name: str, args: Dict[str, Any]) -> Dict[str, Any]:
             weight_term_coverage=args.get("weight_term_coverage"),
             bonus_phrase=args.get("bonus_phrase"),
         )
-        return {"content": [{"type": "json", "data": data}]}
+        return _structured_result(data)
 
     if name == "fts_status":
         data = do_fts_status(collection=args.get("collection"))
-        return {"content": [{"type": "json", "data": data}]}
+        return _structured_result(data)
 
     if name == "vector_index_status":
         data = do_vector_status(collection=args.get("collection"))
-        return {"content": [{"type": "json", "data": data}]}
+        return _structured_result(data)
 
     if name == "fts_match":
         def _quote_if_needed(text: str) -> str:
@@ -137,31 +183,67 @@ async def call_tool(name: str, args: Dict[str, Any]) -> Dict[str, Any]:
         idx = FTSIndex(db_path=Path(db))
         expr = args.get("match") or _build_match(args.get("en"), args.get("ar"), args.get("narrator"))
         if not expr:
-            return {"content": [{"type": "json", "data": {"error": "Provide match or en/ar/narrator"}}]}
+            return _structured_result({"error": "Provide match or en/ar/narrator"}, is_error=True)
         try:
             rows = idx.search_match(expr, limit=int(args.get("limit", 10)))
         except Exception as exc:
-            return {"content": [{"type": "json", "data": {"error": str(exc), "match": expr}}]}
-        return {"content": [{"type": "json", "data": {"match": expr, "hits": rows}}]}
+            return _structured_result({"error": str(exc), "match": expr}, is_error=True)
+        return _structured_result({"match": expr, "hits": rows})
 
-    return {"content": [{"type": "text", "text": f"Unknown tool: {name}"}]} 
-
-
-async def handle_list_tools_handler(**_: Any) -> Any:
-    return list_tools()
+    return _structured_result(is_error=True, text=f"Unknown tool: {name}")
 
 
-async def handle_call_tool_handler(name: Optional[str] = None, arguments: Optional[Dict[str, Any]] = None, **_: Any) -> Any:
+def _refresh_tool_cache(models: Sequence[Any]) -> None:
+    cache = getattr(server, "_tool_cache", None)
+    if isinstance(cache, dict):
+        cache.clear()
+        for model in models:
+            name = getattr(model, "name", None)
+            if name is not None:
+                cache[name] = model
+
+
+async def handle_list_tools_handler(request: Any | None = None, **_: Any) -> Any:
+    raw = list_tools()
+    if ListToolsResult is not None and ServerResult is not None and Tool is not None:
+        models = _tool_models() or ()
+        _refresh_tool_cache(models)
+        return ServerResult(ListToolsResult(tools=list(models)))
+    return raw
+
+
+async def handle_call_tool_handler(
+    request: Any | None = None,
+    *,
+    name: Optional[str] = None,
+    arguments: Optional[Dict[str, Any]] = None,
+    **_: Any,
+) -> Any:
+    if request is not None and hasattr(request, "params"):
+        params = getattr(request, "params")
+        name = getattr(params, "name", name)
+        arguments = getattr(params, "arguments", arguments)
+
     if not name:
-        return {"content": [{"type": "text", "text": "Missing tool name"}]}
-    return await call_tool(name, arguments or {})
+        result = _structured_result(is_error=True, text="Missing tool name")
+    else:
+        result = await call_tool(name, arguments or {})
+
+    if CallToolResult is not None and ServerResult is not None and isinstance(result, CallToolResult):
+        return ServerResult(result)
+    return result
 
 
 def _register_handlers() -> None:
     # Register handlers in a way that works across SDK variants
     if hasattr(server, "request_handlers") and isinstance(server.request_handlers, dict):
-        server.request_handlers["tools/list"] = handle_list_tools_handler
-        server.request_handlers["tools/call"] = handle_call_tool_handler
+        # Modern SDKs key request handlers by request type, older ones by method string
+        if ListToolsRequest is not None and CallToolRequest is not None:
+            server.request_handlers[ListToolsRequest] = handle_list_tools_handler  # type: ignore[index]
+            server.request_handlers[CallToolRequest] = handle_call_tool_handler  # type: ignore[index]
+        else:
+            server.request_handlers["tools/list"] = handle_list_tools_handler
+            server.request_handlers["tools/call"] = handle_call_tool_handler
         return
     # Fallback: try attribute-based registration methods if present
     # Some SDKs might expose 'set_request_handler'

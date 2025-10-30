@@ -1,0 +1,18 @@
+{
+  "tafsir": {
+    "verses": {
+      "28:20": {
+        "id": 3272
+      }
+    },
+    "resource_id": 169,
+    "resource_name": "Ibn Kathir (Abridged)",
+    "language_id": 38,
+    "slug": "en-tafisr-ibn-kathir",
+    "translated_name": {
+      "name": "Ibn Kathir (Abridged)",
+      "language_name": "english"
+    },
+    "text": "<div class=\"arabic uthmani\">وَجَآءَ رَجُلٌ</div><p>(And there came a man) He is described as being a man because he had the courage to take a different route, a shorter route than those who were sent after Musa, so he reached Musa first and said to him: \"O Musa,</p><div class=\"arabic uthmani\">إِنَّ الْمَلاّ يَأْتَمِرُونَ بِكَ</div><p>(Verily, the chiefs are taking counsel together about you.),\" meaning, `they are consulting with one another about you.'</p><div class=\"arabic uthmani\">لِيَقْتُلُوكَ فَاخْرُجْ</div><p>(to kill you, so escape.) means, from this land.</p><div class=\"arabic uthmani\">إِنِّى لَكَ مِنَ النَّـصِحِينَ</div><p>(Truly, I am one of the good advisers to you.)</p>"
+  }
+}

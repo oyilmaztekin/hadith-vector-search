@@ -17,6 +17,12 @@ Start the HTTP server using the FastMCP Streamable HTTP transport (defaults to `
 python3 -m quran_mcp.mcp_http --host 127.0.0.1 --port 8000 --path /mcp
 ```
 
+Expose the endpoint over the internet for quick sharing with LocalTunnel:
+
+```bash
+lt --port 8000 --subdomain ibn-kathir-tafsir
+```
+
 You can also control the bind address via `QURAN_MCP_HOST`, `QURAN_MCP_PORT`, and `QURAN_MCP_PATH`. The legacy stdio runner (`python3 -m quran_mcp.mcp_stdio`) remains available for clients that do not yet support HTTP transport.
 
 ## Running with the Python MCP SDK

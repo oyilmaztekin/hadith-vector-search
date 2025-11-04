@@ -4,573 +4,573 @@
   "manifest": [
     {
       "name": "surah_001.jsonl",
-      "size": 228549,
-      "mtime": 1761761183.784
+      "size": 114449,
+      "mtime": 1761843398.852
     },
     {
       "name": "surah_002.jsonl",
-      "size": 5161222,
-      "mtime": 1761761702.758
+      "size": 2805165,
+      "mtime": 1761843398.884
     },
     {
       "name": "surah_003.jsonl",
-      "size": 3708227,
-      "mtime": 1761761960.809
+      "size": 2097453,
+      "mtime": 1761843398.905
     },
     {
       "name": "surah_004.jsonl",
-      "size": 3433258,
-      "mtime": 1761762189.986
+      "size": 1923165,
+      "mtime": 1761843398.925
     },
     {
       "name": "surah_005.jsonl",
-      "size": 2805268,
-      "mtime": 1761762345.958
+      "size": 1569261,
+      "mtime": 1761843398.939
     },
     {
       "name": "surah_006.jsonl",
-      "size": 2702793,
-      "mtime": 1761762561.496
+      "size": 1512559,
+      "mtime": 1761843398.952
     },
     {
       "name": "surah_007.jsonl",
-      "size": 2312873,
-      "mtime": 1761762830.421
+      "size": 1326283,
+      "mtime": 1761843398.969
     },
     {
       "name": "surah_008.jsonl",
-      "size": 1038191,
-      "mtime": 1761762928.951
+      "size": 577158,
+      "mtime": 1761843398.975
     },
     {
       "name": "surah_009.jsonl",
-      "size": 1304318,
-      "mtime": 1761763096.994
+      "size": 752617,
+      "mtime": 1761843398.983
     },
     {
       "name": "surah_010.jsonl",
-      "size": 1133087,
-      "mtime": 1761763241.091
+      "size": 658869,
+      "mtime": 1761843398.991
     },
     {
       "name": "surah_011.jsonl",
-      "size": 1287224,
-      "mtime": 1761763402.722
+      "size": 755158,
+      "mtime": 1761843399.001
     },
     {
       "name": "surah_012.jsonl",
-      "size": 1048845,
-      "mtime": 1761763548.058
+      "size": 632553,
+      "mtime": 1761843399.007
     },
     {
       "name": "surah_013.jsonl",
-      "size": 549273,
-      "mtime": 1761763604.283
+      "size": 304549,
+      "mtime": 1761843399.012
     },
     {
       "name": "surah_014.jsonl",
-      "size": 711220,
-      "mtime": 1761763672.012
+      "size": 395373,
+      "mtime": 1761843399.016
     },
     {
       "name": "surah_015.jsonl",
-      "size": 847824,
-      "mtime": 1761763802.022
+      "size": 488246,
+      "mtime": 1761843399.021
     },
     {
       "name": "surah_016.jsonl",
-      "size": 1265776,
-      "mtime": 1761763968.497
+      "size": 739161,
+      "mtime": 1761843399.029
     },
     {
       "name": "surah_017.jsonl",
-      "size": 1316293,
-      "mtime": 1761764114.468
+      "size": 726977,
+      "mtime": 1761843399.04
     },
     {
       "name": "surah_018.jsonl",
-      "size": 1411813,
-      "mtime": 1761764278.694
+      "size": 793905,
+      "mtime": 1761843399.047
     },
     {
       "name": "surah_019.jsonl",
-      "size": 1320748,
-      "mtime": 1761764418.193
+      "size": 728917,
+      "mtime": 1761843399.055
     },
     {
       "name": "surah_020.jsonl",
-      "size": 1902846,
-      "mtime": 1761764600.42
+      "size": 1067522,
+      "mtime": 1761843399.064
     },
     {
       "name": "surah_021.jsonl",
-      "size": 1481177,
-      "mtime": 1761764751.8
+      "size": 835824,
+      "mtime": 1761843399.072
     },
     {
       "name": "surah_022.jsonl",
-      "size": 961878,
-      "mtime": 1761764856.943
+      "size": 541354,
+      "mtime": 1761843399.081
     },
     {
       "name": "surah_023.jsonl",
-      "size": 1692340,
-      "mtime": 1761765019.08
+      "size": 963842,
+      "mtime": 1761843399.09
     },
     {
       "name": "surah_024.jsonl",
-      "size": 1036890,
-      "mtime": 1761765105.59
+      "size": 575841,
+      "mtime": 1761843399.097
     },
     {
       "name": "surah_025.jsonl",
-      "size": 1134600,
-      "mtime": 1761765210.052
+      "size": 638035,
+      "mtime": 1761843399.104
     },
     {
       "name": "surah_026.jsonl",
-      "size": 2730347,
-      "mtime": 1761765523.728
+      "size": 1553147,
+      "mtime": 1761843399.118
     },
     {
       "name": "surah_027.jsonl",
-      "size": 1156856,
-      "mtime": 1761765650.428
+      "size": 668628,
+      "mtime": 1761843399.128
     },
     {
       "name": "surah_028.jsonl",
-      "size": 1136417,
-      "mtime": 1761765770.311
+      "size": 657845,
+      "mtime": 1761843399.135
     },
     {
       "name": "surah_029.jsonl",
-      "size": 726252,
-      "mtime": 1761765863.73
+      "size": 424295,
+      "mtime": 1761843399.14
     },
     {
       "name": "surah_030.jsonl",
-      "size": 648506,
-      "mtime": 1761765946.203
+      "size": 373781,
+      "mtime": 1761843399.148
     },
     {
       "name": "surah_031.jsonl",
-      "size": 340365,
-      "mtime": 1761765992.798
+      "size": 198772,
+      "mtime": 1761843399.15
     },
     {
       "name": "surah_032.jsonl",
-      "size": 306888,
-      "mtime": 1761766033.967
+      "size": 175432,
+      "mtime": 1761843399.154
     },
     {
       "name": "surah_033.jsonl",
-      "size": 1082628,
-      "mtime": 1761788194.219
+      "size": 601597,
+      "mtime": 1761843399.159
     },
     {
       "name": "surah_034.jsonl",
-      "size": 731155,
-      "mtime": 1761799106.144
+      "size": 415079,
+      "mtime": 1761843399.164
     },
     {
       "name": "surah_035.jsonl",
-      "size": 481759,
-      "mtime": 1761800214.688
+      "size": 279707,
+      "mtime": 1761843399.169
     },
     {
       "name": "surah_036.jsonl",
-      "size": 1032373,
-      "mtime": 1761800328.686
+      "size": 571852,
+      "mtime": 1761843399.178
     },
     {
       "name": "surah_037.jsonl",
-      "size": 2786506,
-      "mtime": 1761800583.783
+      "size": 1549899,
+      "mtime": 1761843399.196
     },
     {
       "name": "surah_038.jsonl",
-      "size": 1198353,
-      "mtime": 1761803935.04
+      "size": 683274,
+      "mtime": 1761843399.204
     },
     {
       "name": "surah_039.jsonl",
-      "size": 1127953,
-      "mtime": 1761804037.529
+      "size": 637661,
+      "mtime": 1761843399.21
     },
     {
       "name": "surah_040.jsonl",
-      "size": 1177008,
-      "mtime": 1761804154.767
+      "size": 683602,
+      "mtime": 1761843399.218
     },
     {
       "name": "surah_041.jsonl",
-      "size": 788421,
-      "mtime": 1761804230.111
+      "size": 451517,
+      "mtime": 1761843399.224
     },
     {
       "name": "surah_042.jsonl",
-      "size": 645626,
-      "mtime": 1761804303.107
+      "size": 373981,
+      "mtime": 1761843399.229
     },
     {
       "name": "surah_043.jsonl",
-      "size": 2901320,
-      "mtime": 1761804426.272
+      "size": 1559417,
+      "mtime": 1761843399.243
     },
     {
       "name": "surah_044.jsonl",
-      "size": 1085194,
-      "mtime": 1761804509.179
+      "size": 589303,
+      "mtime": 1761843399.249
     },
     {
       "name": "surah_045.jsonl",
-      "size": 468253,
-      "mtime": 1761804561.979
+      "size": 277862,
+      "mtime": 1761843399.253
     },
     {
       "name": "surah_046.jsonl",
-      "size": 614356,
-      "mtime": 1761804611.066
+      "size": 351308,
+      "mtime": 1761843399.258
     },
     {
       "name": "surah_047.jsonl",
-      "size": 618318,
-      "mtime": 1761804664.002
+      "size": 352751,
+      "mtime": 1761843399.264
     },
     {
       "name": "surah_048.jsonl",
-      "size": 609922,
-      "mtime": 1761804704.894
+      "size": 337260,
+      "mtime": 1761843399.269
     },
     {
       "name": "surah_049.jsonl",
-      "size": 286872,
-      "mtime": 1761804730.732
+      "size": 162767,
+      "mtime": 1761843399.271
     },
     {
       "name": "surah_050.jsonl",
-      "size": 807124,
-      "mtime": 1761804793.34
+      "size": 439800,
+      "mtime": 1761843399.275
     },
     {
       "name": "surah_051.jsonl",
-      "size": 823367,
-      "mtime": 1761804876.603
+      "size": 468165,
+      "mtime": 1761843399.287
     },
     {
       "name": "surah_052.jsonl",
-      "size": 833743,
-      "mtime": 1761804946.933
+      "size": 461439,
+      "mtime": 1761843399.291
     },
     {
       "name": "surah_053.jsonl",
-      "size": 1182081,
-      "mtime": 1761805032.644
+      "size": 639718,
+      "mtime": 1761843399.298
     },
     {
       "name": "surah_054.jsonl",
-      "size": 807526,
-      "mtime": 1761805110.776
+      "size": 451853,
+      "mtime": 1761843399.303
     },
     {
       "name": "surah_055.jsonl",
-      "size": 1230131,
-      "mtime": 1761805219.149
+      "size": 678029,
+      "mtime": 1761843399.31
     },
     {
       "name": "surah_056.jsonl",
-      "size": 2194554,
-      "mtime": 1761805352.005
+      "size": 1167410,
+      "mtime": 1761843399.321
     },
     {
       "name": "surah_057.jsonl",
-      "size": 589274,
-      "mtime": 1761805392.425
+      "size": 327434,
+      "mtime": 1761843399.325
     },
     {
       "name": "surah_058.jsonl",
-      "size": 379851,
-      "mtime": 1761805423.472
+      "size": 219719,
+      "mtime": 1761843399.331
     },
     {
       "name": "surah_059.jsonl",
-      "size": 637823,
-      "mtime": 1761805457.689
+      "size": 356082,
+      "mtime": 1761843399.335
     },
     {
       "name": "surah_060.jsonl",
-      "size": 315791,
-      "mtime": 1761805476.612
+      "size": 179121,
+      "mtime": 1761843399.337
     },
     {
       "name": "surah_061.jsonl",
-      "size": 170024,
-      "mtime": 1761805496.769
+      "size": 97584,
+      "mtime": 1761843399.339
     },
     {
       "name": "surah_062.jsonl",
-      "size": 222874,
-      "mtime": 1761805512.945
+      "size": 122916,
+      "mtime": 1761843399.341
     },
     {
       "name": "surah_063.jsonl",
-      "size": 183891,
-      "mtime": 1761805529.205
+      "size": 105362,
+      "mtime": 1761843399.343
     },
     {
       "name": "surah_064.jsonl",
-      "size": 230516,
-      "mtime": 1761805554.927
+      "size": 133212,
+      "mtime": 1761843399.346
     },
     {
       "name": "surah_065.jsonl",
-      "size": 185050,
-      "mtime": 1761805572.582
+      "size": 104655,
+      "mtime": 1761843399.347
     },
     {
       "name": "surah_066.jsonl",
-      "size": 296401,
-      "mtime": 1761805590.097
+      "size": 165022,
+      "mtime": 1761843399.35
     },
     {
       "name": "surah_067.jsonl",
-      "size": 439606,
-      "mtime": 1761805632.777
+      "size": 251470,
+      "mtime": 1761843399.353
     },
     {
       "name": "surah_068.jsonl",
-      "size": 879137,
-      "mtime": 1761805706.49
+      "size": 490281,
+      "mtime": 1761843399.358
     },
     {
       "name": "surah_069.jsonl",
-      "size": 704942,
-      "mtime": 1761805779.22
+      "size": 397156,
+      "mtime": 1761843399.362
     },
     {
       "name": "surah_070.jsonl",
-      "size": 959858,
-      "mtime": 1761805840.996
+      "size": 516794,
+      "mtime": 1761843399.368
     },
     {
       "name": "surah_071.jsonl",
-      "size": 659698,
-      "mtime": 1761805880.848
+      "size": 351254,
+      "mtime": 1761843399.376
     },
     {
       "name": "surah_072.jsonl",
-      "size": 540379,
-      "mtime": 1761805920.331
+      "size": 296653,
+      "mtime": 1761843399.38
     },
     {
       "name": "surah_073.jsonl",
-      "size": 601884,
-      "mtime": 1761805948.969
+      "size": 321848,
+      "mtime": 1761843399.384
     },
     {
       "name": "surah_074.jsonl",
-      "size": 1031882,
-      "mtime": 1761806027.172
+      "size": 551738,
+      "mtime": 1761843399.389
     },
     {
       "name": "surah_075.jsonl",
-      "size": 1048590,
-      "mtime": 1761806083.1
+      "size": 546740,
+      "mtime": 1761843399.395
     },
     {
       "name": "surah_076.jsonl",
-      "size": 687324,
-      "mtime": 1761806126.88
+      "size": 378759,
+      "mtime": 1761843399.399
     },
     {
       "name": "surah_077.jsonl",
-      "size": 704804,
-      "mtime": 1761806196.908
+      "size": 386393,
+      "mtime": 1761843399.404
     },
     {
       "name": "surah_078.jsonl",
-      "size": 695240,
-      "mtime": 1761806252.402
+      "size": 374628,
+      "mtime": 1761843399.408
     },
     {
       "name": "surah_079.jsonl",
-      "size": 629448,
-      "mtime": 1761806318.143
+      "size": 345046,
+      "mtime": 1761843399.413
     },
     {
       "name": "surah_080.jsonl",
-      "size": 657935,
-      "mtime": 1761806377.525
+      "size": 352349,
+      "mtime": 1761843399.417
     },
     {
       "name": "surah_081.jsonl",
-      "size": 806615,
-      "mtime": 1761806419.051
+      "size": 420752,
+      "mtime": 1761843399.421
     },
     {
       "name": "surah_082.jsonl",
-      "size": 266285,
-      "mtime": 1761806446.799
+      "size": 147228,
+      "mtime": 1761843399.426
     },
     {
       "name": "surah_083.jsonl",
-      "size": 692754,
-      "mtime": 1761806497.79
+      "size": 374839,
+      "mtime": 1761843399.43
     },
     {
       "name": "surah_084.jsonl",
-      "size": 379963,
-      "mtime": 1761806535.829
+      "size": 212363,
+      "mtime": 1761843399.433
     },
     {
       "name": "surah_085.jsonl",
-      "size": 644585,
-      "mtime": 1761806567.951
+      "size": 342901,
+      "mtime": 1761843399.437
     },
     {
       "name": "surah_086.jsonl",
-      "size": 178106,
-      "mtime": 1761806592.736
+      "size": 99771,
+      "mtime": 1761843399.438
     },
     {
       "name": "surah_087.jsonl",
-      "size": 433080,
-      "mtime": 1761806620.795
+      "size": 228154,
+      "mtime": 1761843399.442
     },
     {
       "name": "surah_088.jsonl",
-      "size": 320192,
-      "mtime": 1761806658.024
+      "size": 177764,
+      "mtime": 1761843399.444
     },
     {
       "name": "surah_089.jsonl",
-      "size": 534147,
-      "mtime": 1761806701.529
+      "size": 291817,
+      "mtime": 1761843399.448
     },
     {
       "name": "surah_090.jsonl",
-      "size": 401868,
-      "mtime": 1761806731.035
+      "size": 214418,
+      "mtime": 1761843399.451
     },
     {
       "name": "surah_091.jsonl",
-      "size": 286307,
-      "mtime": 1761806753.283
+      "size": 152417,
+      "mtime": 1761843399.454
     },
     {
       "name": "surah_092.jsonl",
-      "size": 452586,
-      "mtime": 1761806784.235
+      "size": 240813,
+      "mtime": 1761843399.461
     },
     {
       "name": "surah_093.jsonl",
-      "size": 307353,
-      "mtime": 1761806800.53
+      "size": 156631,
+      "mtime": 1761843399.467
     },
     {
       "name": "surah_094.jsonl",
-      "size": 73020,
-      "mtime": 1761806811.69
+      "size": 40820,
+      "mtime": 1761843399.47
     },
     {
       "name": "surah_095.jsonl",
-      "size": 109993,
-      "mtime": 1761806822.852
+      "size": 59809,
+      "mtime": 1761843399.473
     },
     {
       "name": "surah_096.jsonl",
-      "size": 276603,
-      "mtime": 1761806848.439
+      "size": 151463,
+      "mtime": 1761843399.478
     },
     {
       "name": "surah_097.jsonl",
-      "size": 156065,
-      "mtime": 1761806855.916
+      "size": 80820,
+      "mtime": 1761843399.48
     },
     {
       "name": "surah_098.jsonl",
-      "size": 109369,
-      "mtime": 1761806867.42
+      "size": 60840,
+      "mtime": 1761843399.482
     },
     {
       "name": "surah_099.jsonl",
-      "size": 261083,
-      "mtime": 1761806878.671
+      "size": 132059,
+      "mtime": 1761843399.484
     },
     {
       "name": "surah_100.jsonl",
-      "size": 133373,
-      "mtime": 1761806893.647
+      "size": 75073,
+      "mtime": 1761843399.486
     },
     {
       "name": "surah_101.jsonl",
-      "size": 158077,
-      "mtime": 1761806908.436
+      "size": 87116,
+      "mtime": 1761843399.487
     },
     {
       "name": "surah_102.jsonl",
-      "size": 85169,
-      "mtime": 1761806919.618
+      "size": 47889,
+      "mtime": 1761843399.489
     },
     {
       "name": "surah_103.jsonl",
-      "size": 24489,
-      "mtime": 1761806924.759
+      "size": 13557,
+      "mtime": 1761843399.489
     },
     {
       "name": "surah_104.jsonl",
-      "size": 76328,
-      "mtime": 1761806937.215
+      "size": 44324,
+      "mtime": 1761843399.49
     },
     {
       "name": "surah_105.jsonl",
-      "size": 42365,
-      "mtime": 1761806944.661
+      "size": 24585,
+      "mtime": 1761843399.491
     },
     {
       "name": "surah_106.jsonl",
-      "size": 46488,
-      "mtime": 1761806950.825
+      "size": 24548,
+      "mtime": 1761843399.492
     },
     {
       "name": "surah_107.jsonl",
-      "size": 100675,
-      "mtime": 1761806960.706
+      "size": 54447,
+      "mtime": 1761843399.494
     },
     {
       "name": "surah_108.jsonl",
-      "size": 64254,
-      "mtime": 1761806965.606
+      "size": 32916,
+      "mtime": 1761843399.495
     },
     {
       "name": "surah_109.jsonl",
-      "size": 77976,
-      "mtime": 1761806974.308
+      "size": 41976,
+      "mtime": 1761843399.496
     },
     {
       "name": "surah_110.jsonl",
-      "size": 45406,
-      "mtime": 1761806979.214
+      "size": 24043,
+      "mtime": 1761843399.498
     },
     {
       "name": "surah_111.jsonl",
-      "size": 89145,
-      "mtime": 1761806986.583
+      "size": 46730,
+      "mtime": 1761843399.499
     },
     {
       "name": "surah_112.jsonl",
-      "size": 131446,
-      "mtime": 1761806992.787
+      "size": 66402,
+      "mtime": 1761843399.501
     },
     {
       "name": "surah_113.jsonl",
-      "size": 129310,
-      "mtime": 1761807000.273
+      "size": 66010,
+      "mtime": 1761843399.502
     },
     {
       "name": "surah_114.jsonl",
-      "size": 74491,
-      "mtime": 1761807008.985
+      "size": 39883,
+      "mtime": 1761843399.503
     }
   ]
 }

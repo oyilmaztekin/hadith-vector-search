@@ -1,65 +1,160 @@
-# Sunnah.com Hadith Scraper
+# Islamic Text Hybrid Retrieval Engine & MCP Server
 
-Prototype scraper for harvesting hadith collections from [Sunnah.com](https://sunnah.com/) with bilingual text and rich metadata suitable for RAG pipelines or classical search. The initial focus is the *Riyad as-Salihin* collection, but the pipeline is structured so other collections can be enabled by changing the collection slug.
+A high-performance retrieval engine and **Model Context Protocol (MCP)** server for Islamic corpora (Hadith & Tafsir). The system combines semantic vector search (**ChromaDB** with multilingual sentence embeddings) and lexical full-text search (**SQLite FTS5**) with an intent-aware re-ranking pipeline designed for high-precision RAG (Retrieval-Augmented Generation).
 
-## Features
+---
 
-- Walks collection index pages to discover book links automatically.
-- Captures Arabic source text, English translations, chapter metadata, narrator lines, and reference tables for each hadith.
-- Persists validated `HadithRecord` objects as JSON Lines (one record per line) plus raw HTML snapshots for reproducibility.
-- Computes per-record checksums to simplify change detection when re-scraping.
+## Architecture Overview
+
+```
+                      ┌────────────────────────────────────────┐
+                      │    AI Clients / Consumers              │
+                      │  (ChatGPT MCP, Claude Desktop, Cursor) │
+                      └──────────────────┬─────────────────────┘
+                                         │ JSON-RPC / MCP Protocol
+                                         ▼
+                      ┌────────────────────────────────────────┐
+                      │            MCP Server Layer            │
+                      │   - Stdio Transport (FastMCP / stdio)  │
+                      │   - HTTP / REST Transport (Flask)      │
+                      └──────────────────┬─────────────────────┘
+                                         │ Query Dispatch
+                                         ▼
+                      ┌────────────────────────────────────────┐
+                      │       Query Intent Router              │
+                      │  (Exact Match / Semantic / Balanced)   │
+                      └──────────────┬──────────────────┬──────┘
+                                     │                  │
+                    ┌────────────────▼────┐        ┌────▼────────────────┐
+                    │ Lexical Search      │        │ Semantic Search     │
+                    │ SQLite FTS5         │        │ ChromaDB            │
+                    │ (BM25, Narrator,    │        │ (Multilingual       │
+                    │  Exact Hadith Ref)  │        │  Sentence-MPNet)    │
+                    └────────────────┬────┘        └────┬────────────────┘
+                                     │                  │
+                                     └─────────┬────────┘
+                                               ▼
+                              ┌────────────────────────────────┐
+                              │ Dynamic Hybrid Re-Ranker       │
+                              │ - Normalized Dense/Sparse RRF  │
+                              │ - Narrator Attribution Boost   │
+                              │ - Phrase Match Coverage Bonus  │
+                              └────────────────┬───────────────┘
+                                               ▼
+                              ┌────────────────────────────────┐
+                              │ Ranked Hadith / Tafsir Context │
+                              └────────────────────────────────┘
+```
+
+---
+
+## Key Features
+
+- **Hybrid Retrieval (Dense + Sparse)**: Blends semantic similarity with lexical exact-match signals to resolve both conceptual topics and specific chain-of-narration / hadith reference queries.
+- **Model Context Protocol (MCP) First**: Seamlessly plug into MCP-enabled AI interfaces like Claude Desktop and ChatGPT.
+- **Multilingual Support**: Supports queries across Arabic and English using multilingual sentence-transformer models (`paraphrase-multilingual-mpnet-base-v2` and `all-MiniLM-L6-v2`).
+- **Domain-Specific Re-ranking**: Boosts scores based on narrator attribution, term coverage, and exact Arabic/English phrase alignments.
+- **Data Ingestion & Scrapers**: Includes robust parsers for bilingual hadith datasets (Sunnah.com) and Ibn Kathir Tafsir.
+
+---
+
+## Project Structure
+
+```
+├── mcp_server/         # MCP Server for Hadith (Riyad as-Salihin, etc.)
+│   ├── apps/           # Search backend: embeddings, SQLite FTS, scoring, router
+│   ├── http_server.py  # HTTP REST API server
+│   ├── mcp_stdio.py    # MCP stdio interface for LLM clients
+│   └── tools.py        # Core search and status tool handlers
+├── quran_mcp/          # FastMCP server for Quran & Ibn Kathir Tafsir
+├── sunnah_scraper/     # Web scraping pipeline for Sunnah.com
+├── quran_scraper/      # Scraper/processor for Tafsir texts
+└── data/               # Corpora and SQLite/ChromaDB indexes
+```
+
+---
 
 ## Quick Start
 
+### 1. Installation
+
 ```bash
-python -m venv venv
+# Clone the repository
+git clone https://github.com/oyilmaztekin/hadith-vector-search.git
+cd hadith-vector-search
+
+# Set up virtual environment
+python3 -m venv venv
 source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-Running the scraper (Riyad as-Salihin by default):
+### 2. Ingest Data & Build Indexes
 
 ```bash
-# Optional: avoid creating .pyc files
-export PYTHONDONTWRITEBYTECODE=1
+# Ingest and validate Hadith collection
+python -m mcp_server.apps.ingestion
 
-python -m sunnah_scraper.cli
+# Build or update vector & FTS indexes
+python -m mcp_server.apps.ingestion --update-indexes
 ```
 
-Limit to specific books:
+### 3. Run MCP Server
 
+#### For Claude Desktop / MCP Clients (Stdio Mode)
 ```bash
-python -m sunnah_scraper.cli --book 1 --book 2
+python3 -m mcp_server.mcp_stdio
 ```
 
-## Output Layout
+#### Run Tafsir MCP Server
+```bash
+python3 -m quran_mcp.mcp_http --host 127.0.0.1 --port 8000 --path /mcp
+```
 
-- `html/<collection>/<book_id>.html` – raw page snapshot used for parsing.
-- `data/<collection>/book_<book_id>.jsonl` – JSON Lines file of `HadithRecord` entries.
-- `data/<collection>/index.json` – summary of books (id, localized titles, book number, hadith count, last scrape timestamp).
+#### Run REST / HTTP API
+```bash
+python3 -m mcp_server.http_server --host 127.0.0.1 --port 8000
+```
 
-Each hadith record includes:
+---
 
-- `collection_slug`, `collection_name`
-- `book_id`, `book_title_en`, `book_title_ar`
-- `chapter_id`, `chapter_number_en`, `chapter_number_ar`, `chapter_title_en`, `chapter_title_ar`
-- `hadith_id_site`, `hadith_num_global`, `hadith_num_in_book`
-- `texts` – Arabic and English content blocks
-- `narrator`, `grading`, `references`, `topics`, `footnotes`
-- `source_url`, `scraped_at`, `checksum`
+## Available MCP Tools
 
-## Configuration Notes
+| Tool | Description |
+|---|---|
+| `hybrid_search` | Execute hybrid search across Hadith corpus with configurable weights and modes (`balanced`, `semantic`, `exact`). |
+| `fts_match` | Fast lexical search matching narrators, Arabic text, or English translations. |
+| `search_tafsir` | Hybrid search across Ibn Kathir Tafsir passages. |
+| `get_verse` | Fetch Tafsir by Surah and Ayah / verse key. |
+| `vector_index_status` / `fts_status` | Index health checks and document statistics. |
 
-- The collection slug defaults to `riyadussalihin` in `sunnah_scraper/cli.py`. Changing it (and optionally limiting books) lets you target other collections.
-- `sunnah_scraper/http.py` throttles requests to roughly one per second with retry support (`tenacity`). Adjust rate limits before large-scale crawls.
-- `sunnah_scraper/parser.py` contains all CSS selectors; update them if Sunnah.com's markup changes.
+---
 
-## Development Hints
+## Integration with Claude Desktop
 
-- Saved HTML snapshots under `html/` double as fixtures for parser tests.
-- The JSON schema (defined in `sunnah_scraper/models.py`) maps cleanly to future SQLite/Postgres ingestion.
-- For longer runs, consider persisting ETag/Last-Modified headers or checksums to implement incremental updates.
+Add the following to your Claude Desktop configuration (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "hadith-search": {
+      "command": "python3",
+      "args": ["-m", "mcp_server.mcp_stdio"],
+      "cwd": "/path/to/hadith-vector-search"
+    },
+    "quran-tafsir": {
+      "command": "python3",
+      "args": ["-m", "quran_mcp.mcp_stdio"],
+      "cwd": "/path/to/hadith-vector-search"
+    }
+  }
+}
+```
+
+---
 
 ## License
 
-The scraper code in this repository is MIT licensed. Refer to upstream sources (e.g., Sunnah.com content and any third-party libraries) for their respective terms.
+This project is open-source under the [MIT License](LICENSE).

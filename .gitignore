@@ -54,3 +54,7 @@ tagged_sentences.json
 # Environment
 .env
 .env.local
+
+# Certificates & Keys
+cert/
+*.pem
